@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Role } from '../entities/role';
-import { Repository } from '../interfaces/repository.interface';
 import { ROLES_REPOSITORY } from '../constants/repositories-tokens';
+import { Repository } from 'src/apps/shared/interfaces/repository.interface';
 
 @Injectable()
 export class FindAllRolesUseCase {

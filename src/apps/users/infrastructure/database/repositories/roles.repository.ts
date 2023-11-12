@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Role } from 'src/apps/users/domain/entities/role';
-import { Repository } from '../../../domain/interfaces/repository.interface';
 import { RolesTypes } from 'src/apps/users/domain/constants/roles-types';
+import { Repository } from 'src/apps/shared/interfaces/repository.interface';
 
 let roles: Role[] = [
   new Role('1', RolesTypes.ADMIN, 'administrador'),

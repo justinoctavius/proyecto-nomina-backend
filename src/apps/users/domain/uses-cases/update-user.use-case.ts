@@ -2,7 +2,6 @@ import { Injectable, Inject } from '@nestjs/common';
 import { Role } from '../entities/role';
 import { User } from '../entities/user/users';
 import { UpdateUserUseCaseProps } from './interfaces/update-user.interface';
-import { Repository } from '../interfaces/repository.interface';
 import { UsersRepository } from '../interfaces/users-repository.interface';
 import { RoleNotFoundException } from '../exceptions/role-not-found.exception';
 import { UserNotFoundException } from '../exceptions/user-not-found.exception';
@@ -10,6 +9,7 @@ import {
   ROLES_REPOSITORY,
   USERS_REPOSITORY,
 } from '../constants/repositories-tokens';
+import { Repository } from 'src/apps/shared/interfaces/repository.interface';
 
 @Injectable()
 export class UpdateUserUseCase {

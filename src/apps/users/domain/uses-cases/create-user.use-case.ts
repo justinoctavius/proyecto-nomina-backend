@@ -1,9 +1,9 @@
 import { Injectable, Inject } from '@nestjs/common';
+import { Repository } from 'src/apps/shared/interfaces/repository.interface';
 import {
   ROLES_REPOSITORY,
   USERS_REPOSITORY,
 } from '../constants/repositories-tokens';
-import { Repository } from '../interfaces/repository.interface';
 import { CreateUserUseCaseProps } from './interfaces/create-user.interface';
 import { User } from '../entities/user/users';
 import { Role } from '../entities/role';
