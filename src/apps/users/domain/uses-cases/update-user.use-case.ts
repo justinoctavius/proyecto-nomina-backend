@@ -3,6 +3,7 @@ import { Role } from '../entities/role';
 import { User } from '../entities/user/users';
 import { UpdateUserUseCaseProps } from './interfaces/update-user.interface';
 import { Repository } from '../interfaces/repository.interface';
+import { UsersRepository } from '../interfaces/users-repository.interface';
 import { RoleNotFoundException } from '../exceptions/role-not-found.exception';
 import { UserNotFoundException } from '../exceptions/user-not-found.exception';
 import {
@@ -14,7 +15,7 @@ import {
 export class UpdateUserUseCase {
   constructor(
     @Inject(USERS_REPOSITORY)
-    private readonly usersRepository: Repository<User>,
+    private readonly usersRepository: UsersRepository,
     @Inject(ROLES_REPOSITORY)
     private readonly rolesRepository: Repository<Role>,
   ) {}

@@ -1,25 +1,37 @@
+import { UsersRepository as IUsersRepository } from './../../../domain/interfaces/users-repository.interface';
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/apps/users/domain/entities/user/users';
-import { Repository } from 'src/apps/users/domain/interfaces/repository.interface';
+
+let users: User[] = [];
 
 @Injectable()
-export class UsersRepository implements Repository<User> {
-  save(entity: User): Promise<User> {
-    throw new Error('Method not implemented.');
+export class UsersRepository implements IUsersRepository {
+  async findByEmail(email: string): Promise<User> {
+    return users.find((user) => user.email === email);
   }
-  update(id: string, entity: User): Promise<User> {
-    throw new Error('Method not implemented.');
+
+  async save(entity: User): Promise<void> {
+    users.push(entity);
   }
-  delete(id: string): Promise<void> {
-    throw new Error('Method not implemented.');
+
+  async update(id: string, entity: User): Promise<void> {
+    users = users.map((user) => {
+      if (user.id === id) {
+        return entity;
+      }
+      return user;
+    });
   }
-  findById(id: string): Promise<User> {
-    throw new Error('Method not implemented.');
+
+  async delete(id: string): Promise<void> {
+    users = users.filter((user) => user.id !== id);
   }
-  findAll(limit?: number, offset?: number): Promise<User[]> {
-    throw new Error('Method not implemented.');
+
+  async findById(id: string): Promise<User> {
+    return users.find((user) => user.id === id);
   }
-  findByProps(props: any): Promise<User[]> {
-    throw new Error('Method not implemented.');
+
+  async findAll(limit?: number, offset?: number): Promise<User[]> {
+    return users.slice(offset, limit);
   }
 }

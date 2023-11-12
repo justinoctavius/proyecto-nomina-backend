@@ -1,14 +1,13 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { User } from '../entities/user/users';
 import { UserNotFoundException } from '../exceptions/user-not-found.exception';
-import { Repository } from '../interfaces/repository.interface';
 import { USERS_REPOSITORY } from '../constants/repositories-tokens';
+import { UsersRepository } from '../interfaces/users-repository.interface';
 
 @Injectable()
 export class DeleteUserUseCase {
   constructor(
     @Inject(USERS_REPOSITORY)
-    private readonly usersRepository: Repository<User>,
+    private readonly usersRepository: UsersRepository,
   ) {}
 
   async execute(id: string) {

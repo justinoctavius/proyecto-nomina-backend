@@ -1,23 +1,11 @@
 import { Module } from '@nestjs/common';
 import { RepositoriesModule } from './database/repositories/repositories.module';
-import { CreateUserUseCase } from '../domain/uses-cases/create-user.use-case';
-import { DeleteUserUseCase } from '../domain/uses-cases/delete-user.use-case';
-import { FindAllUsersUseCase } from '../domain/uses-cases/find-all-users.use-case';
-import { UpdateUserUseCase } from '../domain/uses-cases/update-user.use-case';
+import { DomainModule } from '../domain/domain.module';
+
+const domainModule = DomainModule.forRoot([RepositoriesModule]);
 
 @Module({
-  imports: [RepositoriesModule],
-  providers: [
-    CreateUserUseCase,
-    DeleteUserUseCase,
-    FindAllUsersUseCase,
-    UpdateUserUseCase,
-  ],
-  exports: [
-    CreateUserUseCase,
-    DeleteUserUseCase,
-    FindAllUsersUseCase,
-    UpdateUserUseCase,
-  ],
+  imports: [RepositoriesModule, domainModule],
+  exports: [domainModule],
 })
 export class InfrastructureModule {}
