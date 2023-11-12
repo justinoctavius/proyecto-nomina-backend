@@ -6,6 +6,8 @@ import {
   Post,
   Put,
   Delete,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
 import { CreateUserDto } from '../dtos/create-user.dto';
@@ -29,12 +31,14 @@ export class UsersController {
     return await this.usersService.createUser(createUserDto);
   }
 
+  @HttpCode(HttpStatus.NO_CONTENT)
   @Put(':id')
   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return await this.usersService.updateUser(id, updateUserDto);
   }
 
-  @Delete('id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @Delete(':id')
   async delete(@Param('id') id: string) {
     return await this.usersService.deleteUser(id);
   }
