@@ -30,6 +30,9 @@ export class RolesRepository implements Repository<Role> {
 
   async findById(id: string): Promise<Role> {
     const roleEntity = await this.rolesRepository.findOne({ where: { id } });
+
+    if (!roleEntity) return null;
+
     return this.roleMapper.mapToDomain(roleEntity);
   }
 

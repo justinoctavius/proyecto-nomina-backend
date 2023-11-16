@@ -8,7 +8,7 @@ import {
 } from 'src/apps/users/domain/constants/repositories-tokens';
 import { UserEntity } from '../entities/user.entity';
 import { RoleEntity } from '../entities/role.entity';
-import { RoleMapper } from '../mappers/role.mapper';
+import { MappersModule } from '../mappers/mappers.module';
 
 const usersRepositoryProvider = {
   provide: USERS_REPOSITORY,
@@ -21,8 +21,8 @@ const rolesRepositoryProvider = {
 };
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserEntity, RoleEntity])],
-  providers: [usersRepositoryProvider, rolesRepositoryProvider, RoleMapper],
+  imports: [TypeOrmModule.forFeature([UserEntity, RoleEntity]), MappersModule],
+  providers: [usersRepositoryProvider, rolesRepositoryProvider],
   exports: [usersRepositoryProvider, rolesRepositoryProvider],
 })
 export class RepositoriesModule {}
