@@ -1,35 +1,46 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository as DBRepository } from 'typeorm';
 import { Role } from 'src/apps/users/domain/entities/role';
-import { RolesTypes } from 'src/apps/users/domain/constants/roles-types';
 import { Repository } from 'src/apps/shared/interfaces/repository.interface';
-
-let roles: Role[] = [
-  new Role('1', RolesTypes.ADMIN, 'administrador'),
-  new Role('2', RolesTypes.EDITOR, 'editor'),
-  new Role('3', RolesTypes.EMPLOYEE, 'empleado'),
-  new Role('4', RolesTypes.READ_ONLY, 'solo lectura'),
-];
+import { RoleEntity } from '../entities/role.entity';
+import { RoleMapper } from '../mappers/role.mapper';
 
 @Injectable()
 export class RolesRepository implements Repository<Role> {
-  async save(entity: Role): Promise<void> {
-    roles.push(entity);
+  constructor(
+    @InjectRepository(RoleEntity)
+    private readonly rolesRepository: DBRepository<RoleEntity>,
+    private readonly roleMapper: RoleMapper,
+  ) {}
+
+  async save(role: Role): Promise<void> {
+    const roleEntity = this.roleMapper.mapToPersistence(role);
+    await this.rolesRepository.save(roleEntity);
   }
-  async update(id: string, entity: Role): Promise<void> {
-    roles = roles.map((role) => {
-      if (role.id === id) {
-        return entity;
-      }
-      return role;
-    });
+
+  async update(id: string, role: Role): Promise<void> {
+    const roleEntity = this.roleMapper.mapToPersistence(role);
+    await this.rolesRepository.update(id, roleEntity);
   }
+
   async delete(id: string): Promise<void> {
-    roles = roles.filter((role) => role.id !== id);
+    await this.rolesRepository.delete(id);
   }
+
   async findById(id: string): Promise<Role> {
-    return roles.find((role) => role.id === id);
+    const roleEntity = await this.rolesRepository.findOne({ where: { id } });
+    return this.roleMapper.mapToDomain(roleEntity);
   }
+
   async findAll(limit?: number, offset?: number): Promise<Role[]> {
-    return roles.slice(offset, limit);
+    const rolesEntities = await this.rolesRepository.find({
+      take: limit,
+      skip: offset,
+    });
+
+    const roles = rolesEntities.map(this.roleMapper.mapToDomain);
+
+    return roles;
   }
 }
