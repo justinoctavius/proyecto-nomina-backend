@@ -1,6 +1,6 @@
 export interface CreateDepartmentProps {
   name: string;
-  description: string;
+  description?: string;
 }
 
 export interface UpdateDepartmentProps {

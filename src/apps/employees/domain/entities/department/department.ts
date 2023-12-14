@@ -5,18 +5,15 @@ export class Department {
   constructor(
     public readonly id: string,
     public readonly name: string,
-    public readonly description: string,
+    public readonly description?: string,
   ) {}
 
-  static async create({
-    name,
-    description,
-  }: CreateDepartmentProps): Promise<Department> {
+  static create({ name, description }: CreateDepartmentProps) {
     const id = UUIDGenerator.generate();
     return new Department(id, name, description);
   }
 
-  update({ name, description }: UpdateDepartmentProps): Department {
+  update({ name, description }: UpdateDepartmentProps) {
     return new Department(
       this.id,
       name || this.name,
