@@ -4,11 +4,11 @@ import {
   DEPARTMENTS_REPOSITORY,
   EMPLOYEES_REPOSITORY,
   POSITIONS_REPOSITORY,
-} from '../constants/repositories-tokens';
+} from '../../constants/repositories-tokens';
 import { Repository } from 'src/apps/shared/interfaces/repository.interface';
-import { EmployeesRepository } from '../interfaces/employees-repository.interface';
-import { Department } from '../entities/department/department';
-import { Position } from '../entities/position/position';
+import { EmployeesRepository } from '../../interfaces/employees-repository.interface';
+import { Department } from '../../entities/department/department';
+import { Position } from '../../entities/position/position';
 
 @Injectable()
 export class UpdateEmployeeUseCase {

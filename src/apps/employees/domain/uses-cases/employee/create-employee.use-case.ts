@@ -4,12 +4,12 @@ import {
   EMPLOYEES_REPOSITORY,
   DEPARTMENTS_REPOSITORY,
   POSITIONS_REPOSITORY,
-} from '../constants/repositories-tokens';
+} from '../../constants/repositories-tokens';
 import { CreateEmployeeUseCaseProps } from './interfaces/create-employee.interface';
-import { Position } from '../entities/position/position';
-import { Department } from '../entities/department/department';
-import { EmployeesRepository } from '../interfaces/employees-repository.interface';
-import { Employee } from '../entities/employee/employee';
+import { Position } from '../../entities/position/position';
+import { Department } from '../../entities/department/department';
+import { EmployeesRepository } from '../../interfaces/employees-repository.interface';
+import { Employee } from '../../entities/employee/employee';
 
 @Injectable()
 export class CreateEmployeeUseCases {

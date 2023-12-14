@@ -1,6 +1,6 @@
 import { Injectable, Inject, NotFoundException } from '@nestjs/common';
-import { EMPLOYEES_REPOSITORY } from '../constants/repositories-tokens';
-import { EmployeesRepository } from '../interfaces/employees-repository.interface';
+import { EMPLOYEES_REPOSITORY } from '../../constants/repositories-tokens';
+import { EmployeesRepository } from '../../interfaces/employees-repository.interface';
 
 @Injectable()
 export class DeleteEmployeeUseCase {

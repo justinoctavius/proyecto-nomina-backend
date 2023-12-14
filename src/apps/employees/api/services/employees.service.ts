@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { CreateEmployerDto } from '../dtos/create-employer.dto';
 import { UpdateEmployerDto } from '../dtos/update-employer.dto';
-import { FindAllEmployeesUseCase } from '../../domain/uses-cases/find-all-employees-use-case';
-import { UpdateEmployeeUseCase } from '../../domain/uses-cases/update-employee.use-case';
-import { DeleteEmployeeUseCase } from '../../domain/uses-cases/delete-employee.use-case';
-import { CreateEmployeeUseCases } from '../../domain/uses-cases/create-employee.use-case';
+import { FindAllEmployeesUseCase } from '../../domain/uses-cases/employee/find-all-employees-use-case';
+import { UpdateEmployeeUseCase } from '../../domain/uses-cases/employee/update-employee.use-case';
+import { DeleteEmployeeUseCase } from '../../domain/uses-cases/employee/delete-employee.use-case';
+import { CreateEmployeeUseCases } from '../../domain/uses-cases/employee/create-employee.use-case';
 
 @Injectable()
 export class EmployeesService {

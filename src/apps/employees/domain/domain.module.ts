@@ -1,8 +1,8 @@
 import { Module, Provider } from '@nestjs/common';
-import { CreateEmployeeUseCases } from './uses-cases/create-employee.use-case';
-import { DeleteEmployeeUseCase } from './uses-cases/delete-employee.use-case';
-import { FindAllEmployeesUseCase } from './uses-cases/find-all-employees-use-case';
-import { UpdateEmployeeUseCase } from './uses-cases/update-employee.use-case';
+import { CreateEmployeeUseCases } from './uses-cases/employee/create-employee.use-case';
+import { DeleteEmployeeUseCase } from './uses-cases/employee/delete-employee.use-case';
+import { FindAllEmployeesUseCase } from './uses-cases/employee/find-all-employees-use-case';
+import { UpdateEmployeeUseCase } from './uses-cases/employee/update-employee.use-case';
 
 const useCasesProviders: Provider[] = [
   CreateEmployeeUseCases,
