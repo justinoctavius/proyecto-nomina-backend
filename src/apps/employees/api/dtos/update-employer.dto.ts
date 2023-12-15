@@ -5,25 +5,25 @@ import { CreateEmployerDto } from './create-employer.dto';
 export class UpdateEmployerDto extends PartialType(CreateEmployerDto) {
   @IsOptional()
   @IsString()
-  firstName: string;
+  firstName?: string;
 
   @IsOptional()
   @IsString()
-  lastName: string;
+  lastName?: string;
 
   @IsOptional()
   @IsString()
-  nationalId: string;
+  nationalId?: string;
 
   @IsOptional()
   @IsString()
-  departmentId: string;
+  departmentId?: string;
 
   @IsOptional()
   @IsString()
-  positionId: string;
+  positionId?: string;
 
   @IsOptional()
   @IsString()
-  email: string;
+  email?: string;
 }

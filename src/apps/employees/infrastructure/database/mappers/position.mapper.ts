@@ -8,7 +8,7 @@ export class PositionMapper {
     description,
     salaryPerHour,
   }: PositionEntity): Position {
-    return new Position(id, name, description, salaryPerHour);
+    return new Position(id, name, salaryPerHour, description);
   }
 
   static toPersistence({ id, name, description, salaryPerHour }: Position) {

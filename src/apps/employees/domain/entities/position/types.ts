@@ -1,6 +1,6 @@
 export interface CreatePositionProps {
   name: string;
-  description: string;
+  description?: string;
   salaryPerHour: number;
 }
 

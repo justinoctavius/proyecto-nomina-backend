@@ -1,11 +1,15 @@
 import { IsString, IsOptional } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateDepartmentDto } from './create-department.dto';
+import { CreatePositionDto } from './create-position.dto';
 
-export class UpdateDepartmentDto extends PartialType(CreateDepartmentDto) {
+export class UpdatePositionDto extends PartialType(CreatePositionDto) {
   @IsOptional()
   @IsString()
   name?: string;
+
+  @IsOptional()
+  @IsString()
+  salaryPerHour?: number;
 
   @IsOptional()
   @IsString()

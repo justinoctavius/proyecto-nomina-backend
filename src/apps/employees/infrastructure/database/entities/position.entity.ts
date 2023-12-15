@@ -10,8 +10,8 @@ export class PositionEntity extends BaseEntity {
   @Column({ type: 'varchar', length: 50 })
   name: string;
 
-  @Column({ type: 'varchar', length: 100 })
-  description: string;
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  description?: string;
 
   @Column({ type: 'decimal' })
   salaryPerHour: number;

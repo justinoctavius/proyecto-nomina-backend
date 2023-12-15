@@ -5,21 +5,21 @@ export class Position {
   constructor(
     readonly id: string,
     readonly name: string,
-    readonly description: string,
     readonly salaryPerHour: number,
+    readonly description?: string,
   ) {}
 
   static create({ name, description, salaryPerHour }: CreatePositionProps) {
     const id = UUIDGenerator.generate();
-    return new Position(id, name, description, salaryPerHour);
+    return new Position(id, name, salaryPerHour, description);
   }
 
   update({ name, description, salaryPerHour }: UpdatePositionProps) {
     return new Position(
       this.id,
       name || this.name,
-      description || this.description,
       salaryPerHour || this.salaryPerHour,
+      description || this.description,
     );
   }
 }
