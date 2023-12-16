@@ -20,9 +20,13 @@ export class EmployeeEntity extends BaseEntity {
   @Column({ type: 'varchar', length: 50 })
   email: string;
 
-  @ManyToOne(() => DepartmentEntity, (department) => department.employees)
+  @ManyToOne(() => DepartmentEntity, (department) => department.employees, {
+    eager: true,
+  })
   department?: DepartmentEntity;
 
-  @ManyToOne(() => PositionEntity, (position) => position.employees)
+  @ManyToOne(() => PositionEntity, (position) => position.employees, {
+    eager: true,
+  })
   position?: PositionEntity;
 }
